@@ -7,6 +7,7 @@ import CreatePost from "./pages/CreatePost";
 import Users from "./Users";
 import CreateUser from "./pages/CreateUser";
 import LoginPage from "./Login/LoginPage";
+import PostDetail from "./pages/PostDetail";
 
 const router = createBrowserRouter([
   {
@@ -16,8 +17,10 @@ const router = createBrowserRouter([
       {
         element: <DashboardLayout />, // Sidebar
         children: [
-          { index: true, element: <Posts /> },
-          { path: "posts", element: <Posts /> },
+          { index: true, element: <Posts />},
+          { path: "posts", element: <Posts />, children: [{
+            path: 'detail/:post_id', element: <PostDetail />
+          }] },
           { path: "posts/create", element: <CreatePost /> },
           { path: "users", element: <Users /> },
           { path: "users/create", element: <CreateUser /> },
